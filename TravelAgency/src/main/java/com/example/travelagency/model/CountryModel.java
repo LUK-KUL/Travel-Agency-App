@@ -21,7 +21,7 @@ public class CountryModel {
     private Long id;
 
     @Column (name = "country")
-    private Country countryName;
+    private String countryName;
 
     @ManyToOne
     @JoinColumn(name = "continent_id")

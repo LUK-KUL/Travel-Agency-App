@@ -21,7 +21,7 @@ public class ContinentModel {
     private Long id;
 
     @Column(name = "continent")
-    private Continent continentName;
+    private String continentName;
 
     @OneToMany(mappedBy = "continent")
     private List<CountryModel> countries;
