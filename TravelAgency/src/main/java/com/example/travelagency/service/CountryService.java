@@ -14,12 +14,12 @@ import java.util.List;
 public class CountryService {
     private final CountryRepository countryRepository;
 
-    public void addCountry(CountryModel cityModel) {
-        countryRepository.save(cityModel);
+    public void addCountry(CountryModel countryModel) {
+        countryRepository.save(countryModel);
     }
 
-    public void saveEditedCountry(CountryModel editedCity) {
-        countryRepository.save(editedCity);
+    public void saveEditedCountry(CountryModel editedCountry) {
+        countryRepository.save(editedCountry);
     }
 
     public void removeCountry(Long id) {

@@ -60,6 +60,16 @@ public class TripModel {
     @Column(name = "adult_available_places")
     private int adultPlaces;
 
+    @Column(name = "trip_availability")
+    private boolean isAvailable;
+
     @OneToMany(mappedBy = "trip")
     private List<PurchaseModel> purchases;
+
+    public void updateAvailability(){
+        if (adultPlaces>0){
+            isAvailable = true;
+        }else isAvailable = false;
+    }
+
 }
