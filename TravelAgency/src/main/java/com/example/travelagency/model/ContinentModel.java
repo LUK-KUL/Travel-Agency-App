@@ -2,10 +2,7 @@ package com.example.travelagency.model;
 
 import com.example.travelagency.enums.Continent;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class ContinentModel {
 
@@ -23,6 +21,6 @@ public class ContinentModel {
     @Column(name = "continent")
     private String continentName;
 
-    @OneToMany(mappedBy = "continent")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<CountryModel> countries;
 }

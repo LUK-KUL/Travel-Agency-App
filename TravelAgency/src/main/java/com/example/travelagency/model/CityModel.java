@@ -1,13 +1,8 @@
 package com.example.travelagency.model;
 
-import com.example.travelagency.enums.Country;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import lombok.*;
 
 import java.util.List;
 
@@ -15,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class CityModel {
     @Id
@@ -24,13 +20,14 @@ public class CityModel {
     @Column(name = "city")
     private String cityName;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private CountryModel country;
+    @Column(name = "country_id")
+    private Long countryId;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<HotelModel> hotel;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<AirportModel> airport;
 }

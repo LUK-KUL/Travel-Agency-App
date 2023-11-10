@@ -27,6 +27,6 @@ public class ClientModel {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PurchaseModel> purchases;
 }

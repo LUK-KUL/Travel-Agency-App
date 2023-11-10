@@ -3,10 +3,7 @@ package com.example.travelagency.model;
 import com.example.travelagency.enums.Continent;
 import com.example.travelagency.enums.Country;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,19 +11,20 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class CountryModel {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column (name = "country")
+    @Column(name = "country")
     private String countryName;
 
-    @ManyToOne
-    @JoinColumn(name = "continent_id")
-    private ContinentModel continent;
 
-    @OneToMany(mappedBy = "country")
+    @Column(name = "continent_id")
+    private Long continentId;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<CityModel> city;
 }

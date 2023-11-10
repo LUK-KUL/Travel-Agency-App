@@ -1,15 +1,13 @@
 package com.example.travelagency.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class HotelModel {
     @Id
@@ -25,7 +23,7 @@ public class HotelModel {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private CityModel city;
+
+    @Column(name = "city_id")
+    private Long cityId;
 }

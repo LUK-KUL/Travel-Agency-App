@@ -38,8 +38,8 @@ public class CountryService {
         return countryRepository.findCountryByName(name);
     }
 
-    public List<CountryModel> findCountryByContinent(Continent continent) {
-        return countryRepository.findCountryByContinent(continent);
+    public List<CountryModel> findCountryByContinent(Long continentId) {
+        return countryRepository.findCountryByContinent(continentId);
     }
 
     /*public void updateCountryByName(Long id, Country countryName) {

@@ -8,6 +8,9 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
+@ToString
+
+
 public class AirportModel {
     @Id
     @GeneratedValue
@@ -16,7 +19,7 @@ public class AirportModel {
     @Column(name = "airport")
     private String airportName;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private CityModel city;
+
+    @Column(name = "city_id")
+    private Long cityId;
 }

@@ -1,10 +1,7 @@
 package com.example.travelagency.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 
 import java.math.BigDecimal;
@@ -15,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class PurchaseModel {
     @Id
@@ -31,12 +29,10 @@ public class PurchaseModel {
     @Formula("(adultsQuantity * tripModel.adultPrice) + (childsQuantity * tripModel.childPrice)")
     private BigDecimal totalCost;
 
-    @ManyToOne
-    @JoinColumn(name = "trip_id")
-    private TripModel trip;
+    @Column(name = "trip_id")
+    private Long tripId;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private ClientModel client;
+    @Column(name = "client_id")
+    private Long clientId;
 
 }

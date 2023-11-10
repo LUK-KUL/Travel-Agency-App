@@ -38,8 +38,8 @@ public class CityService {
         return cityRepository.findCityByName(name);
     }
 
-    public List<CityModel> findCityByCountry(String country) {
-        return cityRepository.findCityByCountry(country);
+    public List<CityModel> findCityByCountry(Long countryId) {
+        return cityRepository.findCityByCountry(countryId);
     }
 
     public void updateCityByName(Long id, String cityName) {

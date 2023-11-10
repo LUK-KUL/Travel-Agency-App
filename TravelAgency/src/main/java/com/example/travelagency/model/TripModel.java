@@ -1,10 +1,7 @@
 package com.example.travelagency.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 public class TripModel {
     @Id
@@ -63,7 +61,7 @@ public class TripModel {
     @Column(name = "trip_availability")
     private boolean isAvailable;
 
-    @OneToMany(mappedBy = "trip")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PurchaseModel> purchases;
 
     public void updateAvailability(){

@@ -1,7 +1,9 @@
 package com.example.travelagency.service;
 
 import com.example.travelagency.model.AirportModel;
+import com.example.travelagency.model.CityModel;
 import com.example.travelagency.repository.AirportRepository;
+import com.example.travelagency.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public class AirportService {
 
     private final AirportRepository airportRepository;
+    private final CityRepository cityRepository;
 
     public void addAirport(AirportModel airportModel) {
         airportRepository.save(airportModel);
@@ -26,7 +29,7 @@ public class AirportService {
     }
 
     public List<AirportModel> getAllAirports() {
-        return airportRepository.findAll().stream().toList();
+        return airportRepository.findAll();
     }
 
     public AirportModel findAirportById(Long id) {
@@ -37,8 +40,8 @@ public class AirportService {
         return airportRepository.findAirportsByName(name);
     }
 
-    public List<AirportModel> findAirportByCity(String city) {
-        return airportRepository.findAirportsByCity(city);
+    public List<AirportModel> findAirportByCity(Long cityId) {
+        return airportRepository.findAirportsByCity(cityId);
     }
 
     public void updateAirportByName(Long id, String name) {
