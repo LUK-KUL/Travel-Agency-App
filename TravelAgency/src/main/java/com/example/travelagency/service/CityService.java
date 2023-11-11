@@ -34,8 +34,8 @@ public class CityService {
         return cityRepository.findById(id).orElse(null);
     }
 
-    public List<CityModel> findCityByName(String name) {
-        return cityRepository.findCityByName(name);
+    public CityModel findCityByName(String cityName) {
+        return cityRepository.findCityByName(cityName);
     }
 
     public List<CityModel> findCityByCountry(Long countryId) {

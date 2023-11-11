@@ -12,8 +12,8 @@ import java.util.List;
 
 @Repository
 public interface CityRepository extends JpaRepository<CityModel, Long> {
-    @Query("SELECT c FROM CityModel c WHERE c.cityName = :name")
-    List<CityModel> findCityByName(@Param("name") String name);
+    @Query("SELECT c FROM CityModel c WHERE c.cityName = :cityName")
+    CityModel findCityByName(@Param("cityName") String cityName);
 
     @Query("SELECT c FROM CityModel c WHERE c.countryId = :countryId")
     List<CityModel> findCityByCountry(Long countryId);

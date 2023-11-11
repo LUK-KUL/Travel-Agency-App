@@ -37,18 +37,22 @@ VALUES (4,'NEW_YORK', 5);
 INSERT INTO city_model (id, city, country_id)
 VALUES (5,'MADRID', 4);
 INSERT INTO city_model (id, city, country_id)
-VALUES (6,'BUENOS_AIRES', 6)
+VALUES (6,'BUENOS_AIRES', 6);
+INSERT INTO city_model (id, city, country_id)
+VALUES (7,'KAIR', 1);
+INSERT INTO city_model (id, city, country_id)
+VALUES (8,'BARCELONA', 4);
 
-/*INSERT INTO airport_model (id, airport, city_id)
-VALUES (1,'HURGHADA', 1);
+INSERT INTO airport_model (id, airport, city_id)
+VALUES (1,'HURGHADA_AP', 1);
 INSERT INTO airport_model (id, airport, city_id)
 VALUES (2,'MADRID_BAHARAS', 5);
 INSERT INTO airport_model (id, airport, city_id)
 VALUES (3,'BEIJING_NANYUAN', 3);
 INSERT INTO airport_model (id, airport, city_id)
-VALUES (4,'SYDNEY', 2);
+VALUES (4,'SYDNEY_AP', 2);
 INSERT INTO airport_model (id, airport, city_id)
 VALUES (5,'BUENOS_AIRES_EZEIZA', 6);
 INSERT INTO airport_model (id, airport, city_id)
 VALUES (6,'NEW_YORK_JFK', 4);
-*/
+

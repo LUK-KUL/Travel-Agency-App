@@ -30,7 +30,7 @@ public class AirportController {
     @GetMapping("/getAirportByName/{name}")
     public List<AirportModel> getAirportByName(@PathVariable("name") String name) {return airportService.findAirportByName(name);}
 
-    @GetMapping("/getAirportByCity/{city}")
+    @GetMapping("/getAirportByCity/{cityId}")
     public List<AirportModel> getAirportByCity(@PathVariable("cityId") Long cityId) {return airportService.findAirportByCity(cityId);}
 
     @PostMapping("/updateAirportByName/{id}/{newName}")
