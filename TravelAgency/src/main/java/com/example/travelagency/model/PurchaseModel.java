@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 public class PurchaseModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

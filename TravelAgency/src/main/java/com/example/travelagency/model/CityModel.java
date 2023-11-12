@@ -3,6 +3,7 @@ package com.example.travelagency.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Entity
 public class CityModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "city")
