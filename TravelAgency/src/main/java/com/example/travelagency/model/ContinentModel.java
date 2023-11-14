@@ -1,9 +1,11 @@
 package com.example.travelagency.model;
 
 import com.example.travelagency.enums.Continent;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -21,6 +23,8 @@ public class ContinentModel {
     @Column(name = "continent")
     private String continentName;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<CountryModel> countries;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "continent")
+    @JsonIgnore
+    private List<CountryModel> countries = new ArrayList<>();
 }

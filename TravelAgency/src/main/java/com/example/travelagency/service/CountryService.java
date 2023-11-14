@@ -2,6 +2,7 @@ package com.example.travelagency.service;
 
 import com.example.travelagency.enums.Continent;
 import com.example.travelagency.enums.Country;
+import com.example.travelagency.model.ContinentModel;
 import com.example.travelagency.model.CountryModel;
 import com.example.travelagency.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;

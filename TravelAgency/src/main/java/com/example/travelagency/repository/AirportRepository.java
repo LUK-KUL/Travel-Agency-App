@@ -17,7 +17,7 @@ public interface AirportRepository extends JpaRepository<AirportModel, Long> {
     @Query("SELECT a FROM AirportModel a WHERE a.airportName = :name")
     List<AirportModel> findAirportsByName(@Param("name") String name);
 
-    @Query("SELECT a FROM AirportModel a WHERE a.cityId = :cityId")
+    @Query("SELECT a FROM AirportModel a WHERE a.city.id = :cityId")
     List<AirportModel> findAirportsByCity(@Param("cityId") Long cityId);
 
     @Modifying
@@ -27,7 +27,7 @@ public interface AirportRepository extends JpaRepository<AirportModel, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE AirportModel a SET a.cityId = :cityId WHERE a.id = :id")
+    @Query("UPDATE AirportModel a SET a.city.id = :cityId WHERE a.id = :id")
     int updateAirportCityById(@Param("id") Long id, @Param("cityId") Long cityId);
 
 }

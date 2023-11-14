@@ -21,14 +21,15 @@ public class CityModel {
     @Column(name = "city")
     private String cityName;
 
-    @Column(name = "country_id")
-    private Long countryId;
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private CountryModel country;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city")
     @JsonIgnore
     private List<HotelModel> hotel;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city")
     @JsonIgnore
     private List<AirportModel> airport;
 }

@@ -2,6 +2,7 @@ package com.example.travelagency.model;
 
 import com.example.travelagency.enums.Continent;
 import com.example.travelagency.enums.Country;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,9 +23,14 @@ public class CountryModel {
     private String countryName;
 
 
-    @Column(name = "continent_id")
-    private Long continentId;
+    /*@Column(name = "continent_id")
+    private Long continentId;*/
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "continent_id")
+    private ContinentModel continent;
+
+    @OneToMany(mappedBy = "country")
+    @JsonIgnore
     private List<CityModel> city;
 }

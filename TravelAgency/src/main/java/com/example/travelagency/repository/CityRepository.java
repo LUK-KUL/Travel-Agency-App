@@ -15,7 +15,7 @@ public interface CityRepository extends JpaRepository<CityModel, Long> {
     @Query("SELECT c FROM CityModel c WHERE c.cityName = :cityName")
     CityModel findCityByName(@Param("cityName") String cityName);
 
-    @Query("SELECT c FROM CityModel c WHERE c.countryId = :countryId")
+    @Query("SELECT c FROM CityModel c WHERE c.country.id = :countryId")
     List<CityModel> findCityByCountry(Long countryId);
 
     @Modifying
@@ -25,6 +25,6 @@ public interface CityRepository extends JpaRepository<CityModel, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE CityModel c SET c.countryId = :countryId WHERE c.id =:id")
+    @Query("UPDATE CityModel c SET c.country.id = :countryId WHERE c.id =:id")
     void updateCityCountryById(@Param("id") Long id, @Param("countryId") Long countryId);
 }

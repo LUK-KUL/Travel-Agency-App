@@ -1,5 +1,6 @@
 package com.example.travelagency.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Formula;
@@ -61,7 +62,8 @@ public class TripModel {
     @Column(name = "trip_availability")
     private boolean isAvailable;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "trip")
+    @JsonIgnore
     private List<PurchaseModel> purchases;
 
     public void updateAvailability(){

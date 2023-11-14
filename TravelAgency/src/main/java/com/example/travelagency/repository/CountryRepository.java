@@ -17,7 +17,7 @@ public interface CountryRepository extends JpaRepository <CountryModel, Long> {
     @Query("SELECT country FROM CountryModel country WHERE country.countryName = :name")
     List<CountryModel> findCountryByName(@Param("name") String name);
 
-    @Query("SELECT country FROM CountryModel country WHERE country.continentId = :continentId")
+    @Query("SELECT country FROM CountryModel country WHERE country.continent.id = :continentId")
     List<CountryModel> findCountryByContinent(Long continentId);
 
     @Modifying
@@ -27,6 +27,6 @@ public interface CountryRepository extends JpaRepository <CountryModel, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE CountryModel country SET country.continentId = :continentId WHERE country.id =:id")
+    @Query("UPDATE CountryModel country SET country.continent.id = :continentId WHERE country.id =:id")
     void updateCountryContinentById(@Param("id") Long id, @Param("continentId") Long continentId);
 }
