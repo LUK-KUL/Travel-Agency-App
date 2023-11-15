@@ -8,8 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -66,10 +64,10 @@ public class TripModel {
     @JsonIgnore
     private List<PurchaseModel> purchases;
 
-    public void updateAvailability(){
-        if (adultPlaces>0){
+    public void updateAvailability() {
+        if (adultPlaces > 0) {
             isAvailable = true;
-        }else isAvailable = false;
+        } else isAvailable = false;
     }
 
 }

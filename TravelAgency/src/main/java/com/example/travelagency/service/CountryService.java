@@ -43,9 +43,9 @@ public class CountryService {
         return countryRepository.findCountryByContinent(continentId);
     }
 
-    /*public void updateCountryByName(Long id, Country countryName) {
+    public void updateCountryByName(Long id, String countryName) {
         countryRepository.updateCountryNameById(id, countryName);
-    }*/
+    }
 
     public void updateCountryByContinent(Long id, Long continentId) {
         countryRepository.updateCountryContinentById(id, continentId);

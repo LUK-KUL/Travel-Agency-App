@@ -1,6 +1,5 @@
 package com.example.travelagency.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +18,6 @@ public class AirportModel {
 
     @Column(name = "airport")
     private String airportName;
-
-
-    /*@Column(name = "city_id")
-    private Long cityId;*/
 
     @ManyToOne
     @JoinColumn(name = "city_id")

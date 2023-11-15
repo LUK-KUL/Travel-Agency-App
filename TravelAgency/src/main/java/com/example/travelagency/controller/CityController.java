@@ -25,7 +25,7 @@ public class CityController {
     }
 
     @PostMapping("/editCity/{id}")
-    public void edtiCity(@RequestBody CityModel cityModel) {
+    public void editCity(@RequestBody CityModel cityModel) {
         cityService.saveEditedCity(cityModel);
     }
 

@@ -23,7 +23,7 @@ public interface CountryRepository extends JpaRepository <CountryModel, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE CountryModel country SET country.countryName = :countryName WHERE country.id =:id")
-    void updateCountryNameById(@Param("id") Long id, @Param("countryName") Country countryName);
+    void updateCountryNameById(@Param("id") Long id, @Param("countryName") String countryName);
 
     @Modifying
     @Transactional

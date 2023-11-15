@@ -3,7 +3,6 @@ package com.example.travelagency.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.example.travelagency.model;
 
-import com.example.travelagency.enums.Continent;
-import com.example.travelagency.enums.Country;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,10 +19,6 @@ public class CountryModel {
 
     @Column(name = "country")
     private String countryName;
-
-
-    /*@Column(name = "continent_id")
-    private Long continentId;*/
 
     @ManyToOne
     @JoinColumn(name = "continent_id")

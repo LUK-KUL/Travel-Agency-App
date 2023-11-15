@@ -1,6 +1,5 @@
 package com.example.travelagency.model;
 
-import com.example.travelagency.enums.Continent;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,8 +22,7 @@ public class ContinentModel {
     @Column(name = "continent")
     private String continentName;
 
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @OneToMany (mappedBy = "continent")
+    @OneToMany(mappedBy = "continent")
     @JsonIgnore
     private List<CountryModel> countries = new ArrayList<>();
 }
