@@ -33,8 +33,8 @@ public class HotelService {
         return hotelRepository.findById(id).orElse(null);
     }
 
-    public List<HotelModel> findHotelByCity(CityModel city) {
-        return hotelRepository.findHotelByCity(city.getId());
+    public List<HotelModel> findHotelByCity(Long cityId) {
+        return hotelRepository.findHotelByCity(cityId);
     }
 
 }

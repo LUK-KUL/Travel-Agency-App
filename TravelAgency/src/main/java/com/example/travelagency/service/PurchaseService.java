@@ -26,7 +26,7 @@ public class PurchaseService {
     }
 
     public List<PurchaseModel> getAllPurchases() {
-        return purchaseRepository.findAll().stream().toList();
+        return purchaseRepository.findAll();
     }
 
     public PurchaseModel findPurchaseById(Long id) {

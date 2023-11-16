@@ -1,8 +1,6 @@
 package com.example.travelagency.service;
 
-import ch.qos.logback.core.net.server.Client;
 import com.example.travelagency.model.ClientModel;
-import com.example.travelagency.model.CountryModel;
 import com.example.travelagency.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,7 +33,7 @@ public class ClientService {
         return clientRepository.findById(id).orElse(null);
     }
 
-    public List<ClientModel> findClientByEmail(String email) {
+    public ClientModel findClientByEmail(String email) {
         return clientRepository.findCountryByEmail(email);
     }
 

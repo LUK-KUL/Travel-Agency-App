@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<ClientModel, Long> {
     @Query("SELECT client FROM ClientModel client WHERE client.email = :email")
-    List<ClientModel> findCountryByEmail(String email);
+    ClientModel findCountryByEmail(String email);
 }
