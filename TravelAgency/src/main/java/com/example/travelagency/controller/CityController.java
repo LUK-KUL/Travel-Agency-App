@@ -1,8 +1,6 @@
 package com.example.travelagency.controller;
 
-import com.example.travelagency.model.AirportModel;
 import com.example.travelagency.model.CityModel;
-import com.example.travelagency.service.AirportService;
 import com.example.travelagency.service.CityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

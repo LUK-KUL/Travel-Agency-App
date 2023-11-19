@@ -3,7 +3,6 @@ package com.example.travelagency.controller;
 import com.example.travelagency.model.HotelModel;
 import com.example.travelagency.service.HotelService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

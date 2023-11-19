@@ -2,7 +2,6 @@ package com.example.travelagency.controller;
 
 import com.example.travelagency.model.PurchaseModel;
 import com.example.travelagency.service.PurchaseService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
