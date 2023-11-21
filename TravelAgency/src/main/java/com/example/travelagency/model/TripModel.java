@@ -8,6 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -42,8 +44,7 @@ public class TripModel {
     private LocalDate endDate;
 
     @Column(name = "trip_length")
-    @Formula("DAYS_BETWEEN(start_date, end_date)")
-    private byte tripLength;
+    private long tripLength;
 
     @Column(name = "adult_price")
     private BigDecimal adultPrice;
@@ -58,7 +59,7 @@ public class TripModel {
     private int adultPlaces;
 
     @Column(name = "trip_availability")
-    private boolean isAvailable;
+    private boolean isAvailable = true;
 
     @OneToMany(mappedBy = "trip")
     @JsonIgnore
@@ -66,8 +67,8 @@ public class TripModel {
 
     public void updateAvailability() {
         if (adultPlaces > 0) {
-            isAvailable = true;
-        } else isAvailable = false;
+            setAvailable(true);
+        } else setAvailable(false);
     }
 
 }

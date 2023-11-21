@@ -36,17 +36,19 @@ public class TripService {
     public void updateTripChildPlaces(Long id, int childQuantity) {
         TripModel trip = findTripById(id);
         if (trip != null) {
-            trip.setChildPlaces(trip.getChildPlaces() - childQuantity);
-            saveEditedTrip(trip);
+            tripRepository.updateTripByChildPlaces(id,(trip.getChildPlaces() - childQuantity));
         }
     }
 
     public void updateTripAdultPlaces(Long id, int adultQuantity) {
         TripModel trip = findTripById(id);
         if (trip != null) {
-            trip.setAdultPlaces(trip.getAdultPlaces() - adultQuantity);
-            trip.updateAvailability();
-            saveEditedTrip(trip);
+            tripRepository.updateTripByAdultPlaces(id,(trip.getAdultPlaces() - adultQuantity));
         }
+    }
+
+    public void updateAvailability(TripModel tripModel) {
+        tripModel.updateAvailability();
+        saveEditedTrip(tripModel);
     }
 }

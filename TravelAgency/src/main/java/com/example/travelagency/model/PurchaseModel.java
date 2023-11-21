@@ -24,7 +24,7 @@ public class PurchaseModel {
     private int childsQuantity;
 
     @Column
-    @Formula("(adultsQuantity * tripModel.adultPrice) + (childsQuantity * tripModel.childPrice)")
+    @Formula("(adultsQuantity * trip.adultPrice) + (childsQuantity * trip.childPrice)")
     private BigDecimal totalCost;
 
     @ManyToOne

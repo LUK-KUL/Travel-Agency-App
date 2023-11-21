@@ -13,7 +13,7 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     @GetMapping ("/getAllPurchases")
-    public List<PurchaseModel> getAllPuirchases(){
+    public List<PurchaseModel> getAllPurchases(){
        return purchaseService.getAllPurchases();
     }
 
