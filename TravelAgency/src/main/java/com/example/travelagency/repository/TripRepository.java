@@ -19,4 +19,14 @@ public interface TripRepository extends JpaRepository<TripModel, Long> {
     @Transactional
     @Query("UPDATE TripModel trip SET trip.adultPlaces = :adultQuantity WHERE trip.id =:id")
     void updateTripByAdultPlaces(@Param("id") Long id, @Param("adultQuantity") int adultQuantity);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE TripModel trip SET trip.isAvailable = :isAvailable WHERE trip.id =:id")
+    void updateAvailability(@Param("id") Long id, @Param("isAvailable") boolean isAvailable);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE TripModel trip SET trip.tripLength = :tripLength WHERE trip.id =:id")
+    void setTripLength(@Param("id") Long id, @Param("tripLength") Long tripLength);
 }

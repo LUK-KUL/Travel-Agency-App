@@ -59,16 +59,12 @@ public class TripModel {
     private int adultPlaces;
 
     @Column(name = "trip_availability")
-    private boolean isAvailable = true;
+    private boolean isAvailable;
 
     @OneToMany(mappedBy = "trip")
     @JsonIgnore
     private List<PurchaseModel> purchases;
 
-    public void updateAvailability() {
-        if (adultPlaces > 0) {
-            setAvailable(true);
-        } else setAvailable(false);
-    }
+
 
 }

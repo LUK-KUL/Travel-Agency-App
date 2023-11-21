@@ -5,6 +5,7 @@ import com.example.travelagency.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class TripService {
 
     public void addTrip(TripModel tripModel) {
         tripRepository.save(tripModel);
+        tripRepository.setTripLength(tripModel.getId(), calculateTripLength(tripModel));
     }
 
     public void saveEditedTrip(TripModel editedTrip) {
@@ -36,19 +38,26 @@ public class TripService {
     public void updateTripChildPlaces(Long id, int childQuantity) {
         TripModel trip = findTripById(id);
         if (trip != null) {
-            tripRepository.updateTripByChildPlaces(id,(trip.getChildPlaces() - childQuantity));
+            tripRepository.updateTripByChildPlaces(id, (trip.getChildPlaces() - childQuantity));
         }
     }
 
     public void updateTripAdultPlaces(Long id, int adultQuantity) {
         TripModel trip = findTripById(id);
         if (trip != null) {
-            tripRepository.updateTripByAdultPlaces(id,(trip.getAdultPlaces() - adultQuantity));
+            tripRepository.updateTripByAdultPlaces(id, (trip.getAdultPlaces() - adultQuantity));
         }
     }
 
-    public void updateAvailability(TripModel tripModel) {
-        tripModel.updateAvailability();
-        saveEditedTrip(tripModel);
+    public void updateAvailability(Long id) {
+        TripModel trip = findTripById(id);
+        if (trip.getAdultPlaces() != 0) {
+            tripRepository.updateAvailability(id, true);
+        }
+        tripRepository.updateAvailability(id, false);
+    }
+
+    public Long calculateTripLength(TripModel tripModel) {
+        return tripModel.getStartDate().until(tripModel.getEndDate(), ChronoUnit.DAYS);
     }
 }

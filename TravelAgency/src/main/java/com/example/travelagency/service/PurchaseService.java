@@ -18,10 +18,11 @@ public class PurchaseService {
 
     public void addPurchase(PurchaseModel purchaseModel) {
         purchaseRepository.save(purchaseModel);
-        saveEditedPurchase(calculateTotalCostOfPurchase(purchaseModel, tripService.findTripById(purchaseModel.getTrip().getId())));
-        tripService.updateTripChildPlaces(purchaseModel.getId(), purchaseModel.getChildsQuantity());
-        tripService.updateTripAdultPlaces(purchaseModel.getId(), purchaseModel.getAdultsQuantity());
-        tripService.updateAvailability(purchaseModel.getTrip());
+        TripModel trip = tripService.findTripById(purchaseModel.getTrip().getId());
+        purchaseRepository.setTotalCost(purchaseModel.getId(),calculateTotalCostOfPurchase(purchaseModel, trip));
+        tripService.updateTripChildPlaces(trip.getId(), purchaseModel.getChildsQuantity());
+        tripService.updateTripAdultPlaces(trip.getId(), purchaseModel.getAdultsQuantity());
+        tripService.updateAvailability(trip.getId());
     }
 
     public void saveEditedPurchase(PurchaseModel editedPurchase) {
@@ -40,11 +41,11 @@ public class PurchaseService {
         return purchaseRepository.findById(id).orElse(null);
     }
 
-    public PurchaseModel calculateTotalCostOfPurchase (PurchaseModel purchaseModel, TripModel tripModel){
+    public BigDecimal calculateTotalCostOfPurchase (PurchaseModel purchaseModel, TripModel tripModel){
         BigDecimal totalCost = tripModel.getAdultPrice().multiply(BigDecimal.valueOf(purchaseModel.getAdultsQuantity()))
                 .add(tripModel.getChildPrice().multiply(BigDecimal.valueOf(purchaseModel.getChildsQuantity())));
         purchaseModel.setTotalCost(totalCost);
-        return purchaseModel;
+        return totalCost;
     }
 
 }
