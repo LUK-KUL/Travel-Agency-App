@@ -46,4 +46,14 @@ public class TripController {
     public void updateTripByAdultsAvailablePlaces (@PathVariable("id") Long id, @PathVariable("adultQuantity") int adultQuantity){
         tripService.updateTripAdultPlaces(id, adultQuantity);
     }
+
+    @PostMapping("/updateTripAvailability/{id}/{Available}")
+    public void updateTripAvailability (@PathVariable("id") Long id, @PathVariable("Available") boolean Available){
+        tripService.updateAvailability(id, Available);
+    }
+
+    @GetMapping("/getTripAvailability/{id}")
+    public boolean getAvailability (@PathVariable("id") Long id){
+        return tripService.checkIfTripIsAvailable(id);
+    }
 }

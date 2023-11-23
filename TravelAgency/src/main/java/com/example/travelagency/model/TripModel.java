@@ -59,7 +59,7 @@ public class TripModel {
     private int adultPlaces;
 
     @Column(name = "trip_availability")
-    private boolean isAvailable;
+    private boolean available = true;
 
     @OneToMany(mappedBy = "trip")
     @JsonIgnore

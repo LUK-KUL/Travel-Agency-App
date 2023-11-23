@@ -50,11 +50,19 @@ public class TripService {
     }
 
     public void updateAvailability(Long id) {
-        TripModel trip = findTripById(id);
+        tripRepository.updateAvailability(id, findTripById(id).getAdultPlaces()!=0);
+        /*TripModel trip = findTripById(id);
         if (trip.getAdultPlaces() != 0) {
-            tripRepository.updateAvailability(id, true);
+            tripRepository.updateAvailability(id, false);
         }
-        tripRepository.updateAvailability(id, false);
+        tripRepository.updateAvailability(id, false);*/
+    }
+
+    public boolean checkIfTripIsAvailable (Long id) {
+        return findTripById(id).getAdultPlaces()!=0;
+    }
+    public void updateAvailability(Long id, boolean available) {
+        tripRepository.updateAvailability(id, available);
     }
 
     public Long calculateTripLength(TripModel tripModel) {

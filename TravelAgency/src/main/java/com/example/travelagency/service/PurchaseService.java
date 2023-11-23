@@ -4,8 +4,11 @@ import com.example.travelagency.model.CountryModel;
 import com.example.travelagency.model.PurchaseModel;
 import com.example.travelagency.model.TripModel;
 import com.example.travelagency.repository.PurchaseRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,14 +18,21 @@ import java.util.List;
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
     private final TripService tripService;
-
+/*    //
+    @PersistenceContext
+    private EntityManager entityManager;*/
+    @Transactional //
     public void addPurchase(PurchaseModel purchaseModel) {
         purchaseRepository.save(purchaseModel);
-        TripModel trip = tripService.findTripById(purchaseModel.getTrip().getId());
-        purchaseRepository.setTotalCost(purchaseModel.getId(),calculateTotalCostOfPurchase(purchaseModel, trip));
-        tripService.updateTripChildPlaces(trip.getId(), purchaseModel.getChildsQuantity());
-        tripService.updateTripAdultPlaces(trip.getId(), purchaseModel.getAdultsQuantity());
-        tripService.updateAvailability(trip.getId());
+        Long tripId = purchaseModel.getTrip().getId();
+       /* //
+        entityManager.flush();
+        entityManager.clear();
+        //*/
+        purchaseRepository.setTotalCost(purchaseModel.getId(),calculateTotalCostOfPurchase(purchaseModel, tripService.findTripById(tripId)));
+        tripService.updateTripChildPlaces(tripId, purchaseModel.getChildsQuantity());
+        tripService.updateTripAdultPlaces(tripId, purchaseModel.getAdultsQuantity());
+        //tripService.updateAvailability(tripId);
     }
 
     public void saveEditedPurchase(PurchaseModel editedPurchase) {
